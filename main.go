@@ -8,8 +8,8 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hi,")
-	fmt.Println("Quote of the day:", quote.Opt())
+	quoteText := quote.Opt()
+	fmt.Fprintf(w, "Hi,\nQuote of the day:"+quoteText)
 }
 
 func main() {
