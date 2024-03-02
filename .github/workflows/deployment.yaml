@@ -41,7 +41,7 @@ jobs:
           context: .
           file: ./google-app-engine
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/daily-quote:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/daily-quote:latest
 
 
 
