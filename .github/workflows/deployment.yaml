@@ -20,15 +20,18 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.19'      
-
-      - name: Code Build
+      - name: List Files and Folders
         run: |
-          mkdir ./deployment && go build -v -o ./deployment/daily_quote .
-      
+          ls -al    
+
       - name: Docker Build Image
         run: |
-          docker build -t daily_quote:latest ./deployment
-  
+          docker build -t daily_quote:latest .
+      
+      - name: List Files and Folders
+        run: |
+          ls -al              
+
       - name: Login to docker
         uses: docker/login-action@v3
         with:
