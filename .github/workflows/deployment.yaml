@@ -25,6 +25,7 @@ jobs:
         run: |
           go build 
           echo "Building the project..."
+          mv google-app-engine google-app-engine:latest
       
       - name: Login to docker
         uses: docker/login-action@v3
