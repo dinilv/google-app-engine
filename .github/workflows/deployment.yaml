@@ -33,7 +33,9 @@ jobs:
           ls -al   
       - name: List Docker images
         run: |
-          docker images   
+          docker images
+          docker info | grep "Docker Root Dir"
+   
 
       - name: Login to docker
         uses: docker/login-action@v3
