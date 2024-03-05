@@ -1,0 +1,3 @@
+# deploy the app to gae:standard
+runtime: go1.19
+env: flex
