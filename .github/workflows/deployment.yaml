@@ -37,6 +37,32 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/daily_quote:latest
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.1.7"
+          
+      - name: Terraform Init
+        run: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SA_CREDS }}  
+         
+      - name: Terraform Format
+        run: terraform fmt -check
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SA_CREDS }}  
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SA_CREDS }}  
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_SA_CREDS }}  
+          
+
 
 
           
