@@ -5,10 +5,6 @@ data "google_project" "existing" {
 resource "google_app_engine_application" "quote_daily_app" {
  project     = data.google_project.existing.project_id
  location_id = "us-central1"
-
- lifecycle {
-    create_before_destroy = true
- }
 }
 
 resource "google_artifact_registry_repository" "docker_images" {
@@ -17,8 +13,4 @@ resource "google_artifact_registry_repository" "docker_images" {
  repository_id = "app-engine"
  description   = "example docker repository"
  format        = "DOCKER"
-
- lifecycle {
-    create_before_destroy = true
- }
 }
